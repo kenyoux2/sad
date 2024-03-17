@@ -1,4 +1,4 @@
-  --Vars
+ --Vars
  LocalPlayer = game:GetService("Players").LocalPlayer
  Camera = workspace.CurrentCamera
  VirtualUser = game:GetService("VirtualUser")
@@ -133,8 +133,4 @@ for theme, color in pairs(themes) do
     )
 end
 
---load
-venyx:SelectPage(venyx.pages[1], true)
-venyx:SelectPage(venyx.pages[2], true)
-        end
-end
+
