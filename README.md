@@ -1,4 +1,4 @@
- --Vars
+  --Vars
  LocalPlayer = game:GetService("Players").LocalPlayer
  Camera = workspace.CurrentCamera
  VirtualUser = game:GetService("VirtualUser")
@@ -74,23 +74,67 @@ end)
      VirtualUser:ClickButton2(Vector2.new(), Camera.CFrame)
  end)
  
- local lib = loadstring(game:HttpGet("https://raw.githubusercontent.com/Simak90/pfsetcetc/main/fluxed.lua"))() -- UI Library
-         local win = lib:Window("wtf Hub", " By wtf", Color3.fromRGB(255, 0, 0), _G.closeBind) -- done mess with
-     
-         ---------Spins--------------------------------
-         local Visual = win:Tab("Farm Section", "http://www.roblox.com/asset/?id=6023426915")
-         Visual:Label("Farms")
-         Visual:Line()
-         
-         Visual:Toggle("Auto Farm", "Activates farm. Get in car to start",false, function(value)
-             AutoFarm = value
-                 if value and not AutoFarmRunning then
-                     coroutine.resume(AutoFarmFunc)
-                 end
-         end)
-         Visual:Toggle("TouchTheRoad", "doesnt work for some cars",false, function(value)
-             TouchTheRoad = value
-         end)
-         Visual:Toggle("AntiAFK", "simulates keypressing",false, function(value)
-             AntiAFK = value
-         end)
+ --UI
+local library = loadstring(game:HttpGet("https://raw.githubusercontent.com/FujiXDDDDDDDDD1/GUI/main/README.md"))()
+local venyx = library.new("wtf Hub", 5013109572)
+
+--Themes
+local themes = {
+    Background = Color3.fromRGB(23, 23, 23),
+    Glow = Color3.fromRGB(46, 40, 172),
+    Accent = Color3.fromRGB(30, 20, 53),
+    LightContrast = Color3.fromRGB(20, 20, 20),
+    DarkContrast = Color3.fromRGB(21, 18, 27),
+    TextColor = Color3.fromRGB(71, 104, 184)
+}
+
+--Pages
+local page1 = venyx:addPage("Main")
+local page2 = venyx:addPage("Other")
+
+--Page 1
+local FirstSection1 = page1:addSection("Auto Farm")
+
+FirstSection1:addToggle(
+    "Start",
+    nil,
+    function(value)
+        AutoFarm = value
+        if value and not AutoFarmRunning then
+            coroutine.resume(AutoFarmFunc)
+        end
+    end
+)
+--Page 2
+
+    "Anti AFK",
+    true,
+    function(value)
+        AntiAFK = value
+    end
+)
+SecondSection2:addKeybind(
+    "Toggle Keybind",
+    Enum.KeyCode.RightShift,
+    function()
+        venyx:toggle()
+    end,
+    function(key)
+        Keybind = key.KeyCode.Name
+    end
+)
+for theme, color in pairs(themes) do
+    SecondSection2:addColorPicker(
+        theme,
+        color,
+        function(color3)
+            venyx:setTheme(theme, color3)
+        end
+    )
+end
+
+--load
+venyx:SelectPage(venyx.pages[1], true)
+venyx:SelectPage(venyx.pages[2], true)
+        end
+end
