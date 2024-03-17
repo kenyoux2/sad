@@ -3,7 +3,18 @@
  Camera = workspace.CurrentCamera
  VirtualUser = game:GetService("VirtualUser")
  MarketplaceService = game:GetService("MarketplaceService")
- 
+
+
+ --Notification Handler
+function SendNotification(Title, Message, Duration)
+    game.StarterGui:SetCore("SendNotification", {
+        Title = Title;
+        Text = Message;
+        Duration = Duration;
+    })
+end
+
+
  --Get Current Vehicle
  function GetCurrentVehicle()
      return LocalPlayer.Character and LocalPlayer.Character:FindFirstChild("Humanoid") and LocalPlayer.Character.Humanoid.SeatPart and LocalPlayer.Character.Humanoid.SeatPart.Parent
